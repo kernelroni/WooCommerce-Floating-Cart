@@ -1,20 +1,21 @@
 <?php
 /**
- * Woocommerce Floating Cart
+ * Floating Cart For wooCommerce
  *
  * @package       KRWFC
  * @author        Roni Das
  * @version       1.0.0
  *
  * @wordpress-plugin
- * Plugin Name:   Woocommerce Floating Cart
+ * Plugin Name:   Floating Cart for WooCommerce
  * Plugin URI:    https://www.linkedin.com/in/kernelronifullstackdeveloper/
- * Description:   Floating Cart in every page.
+ * Description:   Move your cart anywhere in the page and Minimize Maximize when needed. Ajax update and no page refresh.
  * Version:       1.0.0
  * Author:        Roni Das
  * Author URI:    https://www.linkedin.com/in/kernelronifullstackdeveloper/
- * Text Domain:   woocommerce-floating-cart
+ * Text Domain:   floating-cart-for-woocommerce
  * Domain Path:   /languages
+ * License: GPLv2 or later
  */
 
 // plugin-boilerplate generated on : https://pluginplate.com/plugin-boilerplate/
@@ -40,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 
 // Plugin name
-define( 'KRWFC_NAME',			'Woocommerce Floating Cart' );
+define( 'KRWFC_NAME',			'Floating Cart For WooCommerce' );
 
 // Plugin version
 define( 'KRWFC_VERSION',		'1.0.0' );
@@ -66,7 +67,7 @@ require_once KRWFC_PLUGIN_DIR . 'core/class-woocommerce-floating-cart.php';
  * The main function to load the only instance
  * of our master class.
  *
- * @author  Roni Das
+ * @author  Rani Das
  * @since   1.0.0
  * @return  object|Woocommerce_Floating_Cart
  */

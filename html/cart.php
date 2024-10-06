@@ -1,4 +1,7 @@
 
+<?php 
+$checkoutUrl = wc_get_checkout_url();
+?>
 <div class="fixed-cart" id="krwfc_cart" draggable="true">
     <div class="krwfc-cart-header">
        
@@ -14,7 +17,7 @@
         <span class="krwfc_cart_header_price">
          
         </span>
-        <img id="krwfc-loading-img" src="<?php echo KRWFC_PLUGIN_URL; ?>assets/images/loading-krwfc.gif" />
+        <img id="krwfc-loading-img" src="<?php echo esc_url(KRWFC_PLUGIN_URL . "/assets/images/loading-krwfc.gif"); ?>" />
         
     </div>
     <div class="krwfc_cart_inner" id="krwfc_cart_inner">
@@ -38,7 +41,7 @@
             <div class="krwfc-cart-total">
                 <strong></strong>
             </div>
-            <a href="<?php echo wc_get_checkout_url(); ?>" class="checkout-button">Checkout</a>
+            <a href="<?php echo esc_url($checkoutUrl); ?>" class="checkout-button">Checkout</a>
         </div>
         <div class="krwfc-cart-empty-footer">
             <div class="krwfc-cart-empty-footer-text">Cart is empty</div>

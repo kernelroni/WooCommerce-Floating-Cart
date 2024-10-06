@@ -104,7 +104,7 @@ class Woocommerce_Floating_Cart_Run{
 	function krwfc_floating_cart_activate() {
 		// run the plugin code if woocommerce exist and active
 		if (!in_array( $this->woocommerce_plugin_path, wp_get_active_and_valid_plugins())){
-			wp_die('Sorry, but Woocommerce Floating Cart requires WooCommerce to be installed and active. <br><a href="' . admin_url( 'plugins.php' ) . '">&laquo; Return to Plugins</a>');			
+			wp_die(esc_html('Sorry, but Woocommerce Floating Cart requires WooCommerce to be installed and active. <br><a href="') . esc_url(admin_url('plugins.php')) . esc_html('">&laquo; Return to Plugins</a>'));			
 		}		
 	}
 
@@ -116,7 +116,7 @@ class Woocommerce_Floating_Cart_Run{
 		$data['total_amount'] = WC()->cart->get_cart_contents_total();
 		$data['products'] = $this->get_cart_products();
 		$data['currency_symbol'] = get_woocommerce_currency_symbol();
-		echo json_encode($data, true);
+		echo wp_json_encode($data, true);
 
 
 		wp_die();
@@ -165,7 +165,14 @@ class Woocommerce_Floating_Cart_Run{
 
 	public function krwfc_remove_cart_item() {
 
-		$product_id = intval($_POST['product_id']);
+		//print_r($_POST);
+		$nonce = check_ajax_referer("krwfc_get_cart", "nonce");
+		if(!$nonce){
+			echo esc_html("Invalid nonce"); // Product not found in the cart
+			wp_die();
+		}
+
+		$product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
 		// Get the current cart items
 		$cart = WC()->cart->get_cart();
 	
@@ -176,12 +183,12 @@ class Woocommerce_Floating_Cart_Run{
 			if ($cart_item['product_id'] == $product_id) {
 				// Remove the item from the cart
 				WC()->cart->remove_cart_item($cart_item_key);
-				echo "Removed"; // Successfully removed
+				echo esc_html("Removed"); // Successfully removed
 				wp_die();
 			}
 		}
 
-		echo "Not Removed"; // Product not found in the cart
+		echo esc_html("Not Removed"); // Product not found in the cart
 		wp_die();
 	}
 
@@ -224,7 +231,7 @@ class Woocommerce_Floating_Cart_Run{
 		wp_enqueue_script( 'krwfc-scripts', KRWFC_PLUGIN_URL . 'assets/js/krwfc.js', array('jquery'), KRWFC_VERSION, false );
 		// in page js
 		wp_localize_script( 'krwfc-scripts', 'krwfc_var', array(
-			'plugin_name'   	=> __( KRWFC_NAME, 'woocommerce-floating-cart' ),
+			'plugin_name'   	=> __( 'Floating Cart for Woocommerce' ),
 			'ajax_url' 	=> admin_url( 'admin-ajax.php' ),
 			'nonce' => wp_create_nonce( "krwfc_get_cart" ),
 		));
