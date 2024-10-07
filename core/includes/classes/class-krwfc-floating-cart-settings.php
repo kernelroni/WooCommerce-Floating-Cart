@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @author		Roni Das
  * @since		1.0.0
  */
-class Woocommerce_Floating_Cart_Settings{
+class krwfc_Floating_Cart_Settings{
 
 	/**
 	 * The plugin name

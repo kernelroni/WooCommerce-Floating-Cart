@@ -104,7 +104,7 @@ class Woocommerce_Floating_Cart_Run{
 	function krwfc_floating_cart_activate() {
 		// run the plugin code if woocommerce exist and active
 		if (!in_array( $this->woocommerce_plugin_path, wp_get_active_and_valid_plugins())){
-			wp_die(esc_html('Sorry, but Woocommerce Floating Cart requires WooCommerce to be installed and active. <br><a href="') . esc_url(admin_url('plugins.php')) . esc_html('">&laquo; Return to Plugins</a>'));			
+			wp_die(esc_html('Sorry, but New Woocommerce Floating Cart requires WooCommerce to be installed and active. <br><a href="') . esc_url(admin_url('plugins.php')) . esc_html('">&laquo; Return to Plugins</a>'));			
 		}		
 	}
 
@@ -212,7 +212,7 @@ class Woocommerce_Floating_Cart_Run{
 	*/
 	public function add_plugin_action_link( $links ) {
 
-		$links['our_shop'] = sprintf( '<a href="%s" title="Custom Link" style="font-weight:700;">%s</a>', 'https://test.test', __( 'Custom Link', 'woocommerce-floating-cart' ) );
+		$links['our_shop'] = sprintf( '<a href="%s" title="Contact Me" style="font-weight:700;">%s</a>', 'https://github.com/kernelroni', __( 'Contact Me', 'new_woocommerce-floating-cart' ) );
 
 		return $links;
 	}
@@ -240,7 +240,10 @@ class Woocommerce_Floating_Cart_Run{
 
 	public function krwfc_add_cart_wrapper(){
 		
-		include_once KRWFC_PLUGIN_DIR . 'html/cart.php';
+		if (!is_cart()){
+			include_once KRWFC_PLUGIN_DIR . 'html/cart.php';
+		}
+		
 	}
 
 }

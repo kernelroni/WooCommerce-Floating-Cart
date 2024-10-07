@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @author		Roni Das
  * @since		1.0.0
  */
-class Woocommerce_Floating_Cart_Helpers{
+class Krwfc_Floating_Cart_Helpers{
 
 	/**
 	 * ######################

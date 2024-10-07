@@ -156,6 +156,24 @@ img#krwfc-loading-img{
     font-size: 16px;
 }
 
+
+.cart-button {
+    display: block;
+    padding: 10px;
+    background-color: #9b9595;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.cart-button:hover{
+    background-color: #c4c5c4;
+}
+
 .checkout-button:hover {
     background-color: #218838;
 }

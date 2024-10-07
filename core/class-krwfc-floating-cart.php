@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * HELPER COMMENT END
  */
 
-if ( ! class_exists( 'Woocommerce_Floating_Cart' ) ) :
+if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 
 	/**
 	 * Main Woocommerce_Floating_Cart Class.
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Woocommerce_Floating_Cart' ) ) :
 	 * @since		1.0.0
 	 * @author		Roni Das
 	 */
-	final class Woocommerce_Floating_Cart {
+	final class Krwfc_Floating_Cart {
 
 		/**
 		 * The real instance
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Woocommerce_Floating_Cart' ) ) :
 		 * @return	void
 		 */
 		public function __clone() {
-			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'woocommerce-floating-cart' ), '1.0.0' );
+			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'new-woocommerce-floating-cart' ), '1.0.0' );
 		}
 
 		/**
@@ -78,7 +78,7 @@ if ( ! class_exists( 'Woocommerce_Floating_Cart' ) ) :
 		 * @return	void
 		 */
 		public function __wakeup() {
-			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'woocommerce-floating-cart' ), '1.0.0' );
+			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'new-woocommerce-floating-cart' ), '1.0.0' );
 		}
 
 		/**
@@ -93,12 +93,12 @@ if ( ! class_exists( 'Woocommerce_Floating_Cart' ) ) :
 		 * @return		object|Woocommerce_Floating_Cart	The one true Woocommerce_Floating_Cart
 		 */
 		public static function instance() {
-			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Woocommerce_Floating_Cart ) ) {
-				self::$instance					= new Woocommerce_Floating_Cart;
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Krwfc_Floating_Cart ) ) {
+				self::$instance					= new Krwfc_Floating_Cart;
 				//self::$instance->base_hooks();
 				self::$instance->includes();
-				self::$instance->helpers		= new Woocommerce_Floating_Cart_Helpers();
-				self::$instance->settings		= new Woocommerce_Floating_Cart_Settings();
+				self::$instance->helpers		= new Krwfc_Floating_Cart_Helpers();
+				self::$instance->settings		= new krwfc_Floating_Cart_Settings();
 
 				//Fire the plugin logic
 				new Woocommerce_Floating_Cart_Run();
@@ -121,10 +121,10 @@ if ( ! class_exists( 'Woocommerce_Floating_Cart' ) ) :
 		 * @return  void
 		 */
 		private function includes() {
-			require_once KRWFC_PLUGIN_DIR . 'core/includes/classes/class-woocommerce-floating-cart-helpers.php';
-			require_once KRWFC_PLUGIN_DIR . 'core/includes/classes/class-woocommerce-floating-cart-settings.php';
+			require_once KRWFC_PLUGIN_DIR . 'core/includes/classes/class-krwfc-floating-cart-helpers.php';
+			require_once KRWFC_PLUGIN_DIR . 'core/includes/classes/class-krwfc-floating-cart-settings.php';
 
-			require_once KRWFC_PLUGIN_DIR . 'core/includes/classes/class-woocommerce-floating-cart-run.php';
+			require_once KRWFC_PLUGIN_DIR . 'core/includes/classes/class-krwfc-floating-cart-run.php';
 		}
 
 		/**
@@ -146,7 +146,7 @@ if ( ! class_exists( 'Woocommerce_Floating_Cart' ) ) :
 		 * @return  void
 		 */
 		public function load_textdomain() {
-			//load_plugin_textdomain( 'woocommerce-floating-cart', FALSE, dirname( plugin_basename( KRWFC_PLUGIN_FILE ) ) . '/languages/' );
+			//load_plugin_textdomain( 'new-woocommerce-floating-cart', FALSE, dirname( plugin_basename( KRWFC_PLUGIN_FILE ) ) . '/languages/' );
 		}
 
 	}

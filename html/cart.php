@@ -1,6 +1,12 @@
 
 <?php 
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+
 $checkoutUrl = wc_get_checkout_url();
+$cartPageUrl = wc_get_cart_url();
 ?>
 <div class="fixed-cart" id="krwfc_cart" draggable="true">
     <div class="krwfc-cart-header">
@@ -23,24 +29,13 @@ $checkoutUrl = wc_get_checkout_url();
     <div class="krwfc_cart_inner" id="krwfc_cart_inner">
 
         <div class="krwfc-mini-cart" id="krwfc-mini-cart">
-            <!-- <div class="krwfc-cart-item">
-                <img src="http://woocommerce.test/wp-content/uploads/2024/09/album-1-150x150.jpg" alt="Product Name Full Name of the product." class="krwfc-item-image">
-
-                <div class="name_qty">
-                <div class="krwfc-item-name"><a href="#" class="krwfc-item-anchor">Product Name Full Name of the product.</a></div>
-                <div class="krwfc-item-qty-cat"><span class="krwfc-item-qty"> Qty 1 </span> <a href="#" class="krwfc-item-cat">Music</a></div>
-                </div>
-
-                <div class="krwfc-item-price">$10.00</div>
-                <spn class="krwfc-item-remove">x</spn>
-            </div> -->
-
 
         </div>
         <div class="krwfc-cart-footer">
             <div class="krwfc-cart-total">
                 <strong></strong>
             </div>
+            <a href="<?php echo esc_url($cartPageUrl); ?>" class="cart-button">View Cart</a>
             <a href="<?php echo esc_url($checkoutUrl); ?>" class="checkout-button">Checkout</a>
         </div>
         <div class="krwfc-cart-empty-footer">
