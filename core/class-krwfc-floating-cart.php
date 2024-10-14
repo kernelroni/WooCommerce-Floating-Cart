@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * To add a new class, here's what you need to do: 
  * 1. Add your new class within the following folder: core/includes/classes
  * 2. Create a new variable you want to assign the class to (as e.g. public $helpers)
- * 3. Assign the class within the instance() function ( as e.g. self::$instance->helpers = new Woocommerce_Floating_Cart_Helpers();)
+ * 3. Assign the class within the instance() function ( as e.g. self::$instance->helpers = new Krwfc_Floating_Cart_Helpers();)
  * 4. Register the class you added to core/includes/classes within the includes() function
  * 
  * HELPER COMMENT END
@@ -21,10 +21,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 
 	/**
-	 * Main Woocommerce_Floating_Cart Class.
+	 * Main Krwfc_Floating_Cart Class.
 	 *
 	 * @package		KRWFC
-	 * @subpackage	Classes/Woocommerce_Floating_Cart
+	 * @subpackage	Classes/Krwfc_Floating_Cart
 	 * @since		1.0.0
 	 * @author		Roni Das
 	 */
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 		 *
 		 * @access	private
 		 * @since	1.0.0
-		 * @var		object|Woocommerce_Floating_Cart
+		 * @var		object|Krwfc_Floating_Cart
 		 */
 		private static $instance;
 
@@ -44,7 +44,7 @@ if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 		 *
 		 * @access	public
 		 * @since	1.0.0
-		 * @var		object|Woocommerce_Floating_Cart_Helpers
+		 * @var		object|Krwfc_Floating_Cart_Helpers
 		 */
 		public $helpers;
 
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 		 *
 		 * @access	public
 		 * @since	1.0.0
-		 * @var		object|Woocommerce_Floating_Cart_Settings
+		 * @var		object|Krwfc_Floating_Cart_Settings
 		 */
 		public $settings;
 
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 		 * @return	void
 		 */
 		public function __clone() {
-			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'new-woocommerce-floating-cart' ), '1.0.0' );
+			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'new-krwfc-floating-cart' ), '1.0.0' );
 		}
 
 		/**
@@ -78,19 +78,19 @@ if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 		 * @return	void
 		 */
 		public function __wakeup() {
-			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'new-woocommerce-floating-cart' ), '1.0.0' );
+			//_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'new-krwfc-floating-cart' ), '1.0.0' );
 		}
 
 		/**
-		 * Main Woocommerce_Floating_Cart Instance.
+		 * Main Krwfc_Floating_Cart Instance.
 		 *
-		 * Insures that only one instance of Woocommerce_Floating_Cart exists in memory at any one
+		 * Insures that only one instance of Krwfc_Floating_Cart exists in memory at any one
 		 * time. Also prevents needing to define globals all over the place.
 		 *
 		 * @access		public
 		 * @since		1.0.0
 		 * @static
-		 * @return		object|Woocommerce_Floating_Cart	The one true Woocommerce_Floating_Cart
+		 * @return		object|Krwfc_Floating_Cart	The one true Krwfc_Floating_Cart
 		 */
 		public static function instance() {
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Krwfc_Floating_Cart ) ) {
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 				self::$instance->settings		= new krwfc_Floating_Cart_Settings();
 
 				//Fire the plugin logic
-				new Woocommerce_Floating_Cart_Run();
+				new Krwfc_Floating_Cart_Run();
 
 				/**
 				 * Fire a custom action to allow dependencies
@@ -146,7 +146,7 @@ if ( ! class_exists( 'Krwfc_Floating_Cart' ) ) :
 		 * @return  void
 		 */
 		public function load_textdomain() {
-			//load_plugin_textdomain( 'new-woocommerce-floating-cart', FALSE, dirname( plugin_basename( KRWFC_PLUGIN_FILE ) ) . '/languages/' );
+			//load_plugin_textdomain( 'new-krwfc-floating-cart', FALSE, dirname( plugin_basename( KRWFC_PLUGIN_FILE ) ) . '/languages/' );
 		}
 
 	}

@@ -32,27 +32,27 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 
 /**
- * Class Woocommerce_Floating_Cart_Run
+ * Class Krwfc_Floating_Cart_Run
  *
  * Thats where we bring the plugin to life
  *
  * @package		KRWFC
- * @subpackage	Classes/Woocommerce_Floating_Cart_Run
+ * @subpackage	Classes/Krwfc_Floating_Cart_Run
  * @author		Roni Das
  * @since		1.0.0
  */
-class Woocommerce_Floating_Cart_Run{
+class Krwfc_Floating_Cart_Run{
 
-	private $woocommerce_plugin_path = null;
+	private $krwfc_plugin_path = null;
 
 	/**
-	 * Our Woocommerce_Floating_Cart_Run constructor 
+	 * Our Krwfc_Floating_Cart_Run constructor 
 	 * to run the plugin logic.
 	 *
 	 * @since 1.0.0
 	 */
 	function __construct(){
-		$this->woocommerce_plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce/woocommerce.php';
+		$this->krwfc_plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce/woocommerce.php';
 		$this->add_hooks();
 		
 	}
@@ -79,7 +79,7 @@ class Woocommerce_Floating_Cart_Run{
 		register_activation_hook(KRWFC_PLUGIN_FILE, array( $this, 'krwfc_floating_cart_activate' ) );
 
 		// run only if woocommerce plugin is active.
-		if (in_array( $this->woocommerce_plugin_path, wp_get_active_and_valid_plugins())){
+		if (in_array( $this->krwfc_plugin_path, wp_get_active_and_valid_plugins())){
 
 			add_action( 'plugin_action_links_' . KRWFC_PLUGIN_BASE, array( $this, 'add_plugin_action_link' ), 20 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_backend_scripts_and_styles' ), 20 );
@@ -103,7 +103,7 @@ class Woocommerce_Floating_Cart_Run{
 
 	function krwfc_floating_cart_activate() {
 		// run the plugin code if woocommerce exist and active
-		if (!in_array( $this->woocommerce_plugin_path, wp_get_active_and_valid_plugins())){
+		if (!in_array( $this->krwfc_plugin_path, wp_get_active_and_valid_plugins())){
 			wp_die(esc_html('Sorry, but New Woocommerce Floating Cart requires WooCommerce to be installed and active. <br><a href="') . esc_url(admin_url('plugins.php')) . esc_html('">&laquo; Return to Plugins</a>'));			
 		}		
 	}
@@ -168,7 +168,7 @@ class Woocommerce_Floating_Cart_Run{
 		//print_r($_POST);
 		$nonce = check_ajax_referer("krwfc_get_cart", "nonce");
 		if(!$nonce){
-			echo esc_html("Invalid nonce"); // Product not found in the cart
+			echo esc_html("Invalid nonce"); 
 			wp_die();
 		}
 
@@ -188,7 +188,7 @@ class Woocommerce_Floating_Cart_Run{
 			}
 		}
 
-		echo esc_html("Not Removed"); // Product not found in the cart
+		echo esc_html("Not Removed"); 
 		wp_die();
 	}
 
@@ -240,7 +240,7 @@ class Woocommerce_Floating_Cart_Run{
 
 	public function krwfc_add_cart_wrapper(){
 		
-		if (!is_cart()){
+		if (!is_cart() && !is_checkout()){
 			include_once KRWFC_PLUGIN_DIR . 'html/cart.php';
 		}
 		

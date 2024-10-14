@@ -10,7 +10,7 @@
  * Plugin Name:   New Floating Cart for WooCommerce
  * Plugin URI:    https://github.com/kernelroni/WooCommerce-Floating-Cart
  * Description:   Move your cart anywhere in the page and Minimize Maximize when needed. Ajax update and no page refresh.
- * Version:       1.0.1
+ * Version:       1.0.2
  * Author:        Roni Das
  * Author URI:    https://www.linkedin.com/in/kernelronifullstackdeveloper/
  * Text Domain:   floating-cart-for-woocommerce
@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'KRWFC_NAME',			'New Floating Cart For WooCommerce' );
 
 // Plugin version
-define( 'KRWFC_VERSION',		'1.0.0' );
+define( 'KRWFC_VERSION',		'1.0.2' );
 
 // Plugin Root File
 define( 'KRWFC_PLUGIN_FILE',	__FILE__ );
